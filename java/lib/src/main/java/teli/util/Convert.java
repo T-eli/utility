@@ -4,17 +4,17 @@ public class Convert {
 
     /**
      * @param b byte array to be converted
-     * @return Hex String representation of b
+     * @return Lowercase Hex String representation of b
      */
     static public String toHexString(byte[] b) {
         return toHexString(b, 0, b.length);
     }
 
     /**
-     * @param b byte array to be converted
+     * @param b      byte array to be converted
      * @param offset starting offset
      * @param length number of bytes to convert, must be lower than b.length - offset
-     * @return Hex String representation of the array slice
+     * @return Lowercase Hex String representation of the array slice
      */
     static public String toHexString(byte[] b, int offset, int length) {
         StringBuilder sb = new StringBuilder();

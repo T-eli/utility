@@ -1,5 +1,7 @@
 package teli.util;
 
+import java.util.Arrays;
+
 public class Convert {
 
     /**
@@ -55,6 +57,24 @@ public class Convert {
             return new byte[]{(byte) (value >>> 24 & 0xFF), (byte) (value >>> 16 & 0xFF),
                     (byte) (value >>> 8 & 0xFF), (byte) (value & 0xFF)};
         }
+    }
+
+    /**
+     * Converts a byte array into an  32-bit signed integer.
+     * <p>
+     * if b is longer than 4 bytes, only the first 4 bytes (Big Endian) are converted.
+     * @param b byte array to be converted
+     * @return integer representation of bytes
+     */
+    public static int toInt(byte[] b) {
+        if (b.length > 4){
+            b = Arrays.copyOfRange(b, b.length - 4, b.length);
+        }
+        int value = 0;
+        for (int i = 0; i < b.length; i++) {
+            value += (b[i] & 0xFF) << (8 * (b.length - i - 1));
+        }
+        return value;
     }
 
 
